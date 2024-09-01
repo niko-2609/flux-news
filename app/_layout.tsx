@@ -6,8 +6,10 @@ import { Text } from 'react-native';
 export default function Layout(props:any) {
     const [ isEnabled, setIsEnabled ] = useState<any>(false)
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
+    <Stack screenOptions={{
+        headerShown: false
+    }}>
+      <Stack.Screen name="index" />
     </Stack>
   );
 }

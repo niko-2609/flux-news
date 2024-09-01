@@ -1,31 +1,37 @@
 const news = [
     {
       "id": "1",
-      "title": "Breaking News: Market Crash",
-      "subtitle": "Stock Market Takes a Dive",
+      "title": "Olympic Boxing Controversy",
+      "subtitle": "The fight that sparked a debate!",
       "context": [
         {
           "id": "1",
-          "contextTitle": "Market Overview",
-          "contextDescription": "An analysis of the market trends leading to the crash.",
+          "contextTitle": "What happened?",
+          "contextDescription": "In a surprising turn of events at the Paris 2024 Olympics, Algerian boxer Imane Khelif won her first match against Italian boxer Angela Carini in just 46 seconds. Carini withdrew from the fight, leaving many spectators confused and concerned.",
           "contextImage": "market-overview.png"
         },
         {
           "id": "2",
-          "contextTitle": "Investor Reactions",
-          "contextDescription": "How investors are responding to the market crash.",
+          "contextTitle": "Why the Withdrawal",
+          "contextDescription": "Carini cited severe pain in her nose as the reason for her sudden exit. She expressed her heartbreak, stating, 'I didn't want to, I couldn't finish the match.' Despite the quick end to the fight, she emphasized that she had no issues with Khelif's participation.",
           "contextImage": "investor-reactions.png"
         },
         {
           "id": "3",
-          "contextTitle": "Government Response",
-          "contextDescription": "Government actions to stabilize the market.",
+          "contextTitle": "The controversy",
+          "contextDescription": "Khelif's participation has ignited a heated debate. She was previously disqualified from the 2023 World Championships for failing a gender eligibility test. Critics argue that allowing athletes with XY chromosomes (typically associated with male biology) to compete in women's events creates an uneven playing field.",
           "contextImage": "government-response.png"
         },
         {
           "id": "4",
-          "contextTitle": "Future Predictions",
-          "contextDescription": "Experts predict the future of the market.",
+          "contextTitle": "What are DSDs?",
+          "contextDescription": "DSD stands for Differences in Sexual Development, a term used for conditions where individuals have variations in their chromosomes, hormones, or reproductive organs. Some athletes with DSDs may have higher testosterone levels, which can impact competition in sports.",
+          "contextImage": "future-predictions.png"
+        },
+        {
+          "id": "5",
+          "contextTitle": "Reactions",
+          "contextDescription": "The situation has drawn mixed reactions. Some prominent athletes and sports figures have criticized the International Olympic Committee (IOC) for its policies, while others support Khelif's right to compete. Social media has seen a surge of support for Carini, with the hashtag #IStandWithAngelaCarini trending.",
           "contextImage": "future-predictions.png"
         }
       ],
