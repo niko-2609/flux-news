@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         height: '100%',
-        paddingTop: Platform.OS === "android" ? moderateScale(25) : moderateScale(0),
+        paddingTop: Platform.OS === "android" ? moderateScale(0) : moderateScale(0),
         alignItems: 'center',
         backgroundColor: '#211C34',
     },
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: "white",
         letterSpacing: 1,
-        fontWeight: 600,
+        fontWeight: '600',
         fontFamily: "KronaOne_400Regular"
     },
     description: {
@@ -53,6 +53,6 @@ const styles = StyleSheet.create({
         paddingTop: moderateScale(16),
         paddingHorizontal: moderateScale(3),
         letterSpacing: 2,
-        lineHeight: 30
+        lineHeight: Platform.OS === "android" ? 25 : 30
     }
 })
