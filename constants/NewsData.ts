@@ -1,7 +1,7 @@
 import { BoxingFighting, BoxingShouting, BoxingSitting, DSD, Reactions, TitleImage } from "./Images";
 
 // newsData.js
-const news = [
+export const news = [
   {
     id: "1",
     context: [
@@ -13,7 +13,7 @@ const news = [
       },
       {
         id: "2",
-        contextTitle: "What happened?",
+        contextTitle: "What Happened?",
         contextDescription: "In a surprising turn of events at the Paris 2024 Olympics, Algerian boxer Imane Khelif won her first match against Italian boxer Angela Carini in just 46 seconds. Carini withdrew from the fight, leaving many spectators confused and concerned.",
         contextImage: BoxingSitting,
       },

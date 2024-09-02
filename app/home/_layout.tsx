@@ -6,8 +6,13 @@ export default function TabLayout() {
   return (
     <Tabs 
     screenOptions={{ 
-        tabBarActiveTintColor: 'blue', 
+        tabBarActiveTintColor: '#cfbf15', 
         headerShown: false,
+        tabBarStyle: {
+          backgroundColor: '#211C34',
+          shadowOpacity: 0,
+          elevation: 0
+        }
       }}
       sceneContainerStyle={{
         backgroundColor: '#211C4'
@@ -15,7 +20,6 @@ export default function TabLayout() {
     >
       <Tabs.Screen
         name="whatsNew"
-        
         options={{
           title: "What's New",
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
