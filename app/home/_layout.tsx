@@ -4,14 +4,18 @@ import { Text, View } from 'react-native';
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ 
+    <Tabs 
+    screenOptions={{ 
         tabBarActiveTintColor: 'blue', 
         headerShown: false,
-        headerLeft: () => <Text>Hello</Text>
+      }}
+      sceneContainerStyle={{
+        backgroundColor: '#211C4'
       }}
     >
       <Tabs.Screen
         name="whatsNew"
+        
         options={{
           title: "What's New",
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,

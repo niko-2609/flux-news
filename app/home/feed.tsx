@@ -1,16 +1,27 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
 
 const Feed = () => {
 
   return (
-    <SafeAreaView className='flex-1'>
-      <Text>Feed</Text>
+    <SafeAreaView >
+ 
+     <Text>Feed</Text>
+
     </SafeAreaView>
   )
 }
 
 export default Feed
 
+const styles = StyleSheet.create({
+  container:{
+    flex: 1
+  }, 
+  subContainer: {
+    flex: 1,
+    backgroundColor: '#211C4',
+  }
+})

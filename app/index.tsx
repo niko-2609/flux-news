@@ -1,6 +1,6 @@
 import { Link, useNavigation } from 'expo-router';
 import { useEffect } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Root() {
@@ -13,8 +13,9 @@ export default function Root() {
 
 
   return (
-    <SafeAreaView className='flex-1'> 
+    <SafeAreaView> 
       <Link href="/home/feed">Navigate to Feed</Link>
     </SafeAreaView>
   );
 }
+
