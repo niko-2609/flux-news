@@ -1,13 +1,13 @@
 import { View, Text, Image, StyleSheet, Platform } from 'react-native'
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters'
 
 const NewsOverview = (props: any) => {
     console.log("PROPS", props)
     return (
         <View style={styles.container}>
             <View>
-                <Image source={props?.item?.contentImage} style={{ width: 380, height: 420 }} resizeMode='contain' />
+                <Image source={props?.item?.contentImage} style={{ width: scale(350), height: 450 }} resizeMode='contain' />
 
             </View>
             <View style={styles.textContainer}>
@@ -23,30 +23,29 @@ export default NewsOverview
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Platform.OS === "android" ? 25 : 60,
+        paddingTop: Platform.OS === "android" ? moderateScale(25) : moderateScale(0),
         alignItems: 'center',
         backgroundColor: '#211C34',
         height: '100%',
         width: '100%'
     },
     textContainer: {
-        marginVertical: 5,
-        paddingHorizontal: 10
-
+        paddingHorizontal: moderateScale(10),
+        marginVertical: moderateScale(12)
     },
     heading: {
         fontSize: 52,
         fontWeight: '600',
         textAlign: 'center',
-        marginBottom: 5,
-        color: '#BE4848'
+        marginBottom: moderateScale(12),
+        color: '#BE4848',
     },
     subHeading: {
-        fontSize: 44,
+        fontSize: moderateScale(40),
         fontWeight: '500',
         textAlign: 'center',
         color: 'white',
-        letterSpacing: 2,
-        lineHeight: 45
+        letterSpacing: 3,
+        lineHeight: moderateScale(50)
     }
 })

@@ -4,6 +4,7 @@ import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import NewsOverview from '@/components/shared/NewsOverview';
 import { news } from "../../constants/NewsData"
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import InfoScreen from '@/components/shared/InfoScreen';
 
 const verticalData = news // Example data for vertical FlatList
 
@@ -74,7 +75,7 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
             ) : subIndex === 2 ? (
               <NewsOverview item={subItem} />
             ) : (
-              <Text>{subItem.contentTitle}</Text>
+              <InfoScreen item={subItem}/>
             )}
           </View>
         ))}

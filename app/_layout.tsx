@@ -2,10 +2,19 @@ import { Stack } from 'expo-router/stack';
 import { useState } from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useFonts } from 'expo-font';
+import { KronaOne_400Regular } from '@expo-google-fonts/krona-one';
 
 
 export default function Layout(props:any) {
     const [ isEnabled, setIsEnabled ] = useState<any>(false)
+    const [fontsLoaded] = useFonts({
+      KronaOne_400Regular,
+    });
+  
+    if (!fontsLoaded) {
+      return null; // You can show a loading screen here if needed
+    }
   return (
     <SafeAreaProvider style={styles.container}>
             {/* Hide the status bar globally */}
