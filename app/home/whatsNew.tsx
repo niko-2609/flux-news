@@ -137,130 +137,6 @@
 // export default WhatsNew;
 
 
-
-// import React, { useEffect, useRef, useState } from 'react';
-// import { View, Text, FlatList, ScrollView, Dimensions, StyleSheet } from 'react-native';
-
-// const verticalData = [...Array(10).keys()]; // Example data for vertical FlatList
-// const rightScrollData = [...Array(5).keys()]; // Example data for right items in the horizontal scroll
-
-// const SCREEN_HEIGHT = Dimensions.get('window').height;
-// const SCREEN_WIDTH = Dimensions.get('window').width;
-
-// const Item = ({ item, setVerticalScrollEnabled, initialScrollIndex }) => {
-//   const scrollViewRef = useRef(null);
-
-//   useEffect(() => {
-//     // Ensure the ScrollView starts at the correct index
-//     if (scrollViewRef.current) {
-//       scrollViewRef.current.scrollTo({
-//         x: SCREEN_WIDTH * initialScrollIndex,
-//         animated: false,
-//       });
-//     }
-//   }, [initialScrollIndex]);
-
-//   const handleScroll = (event) => {
-//     const currentOffset = event.nativeEvent.contentOffset.x;
-//     const index = Math.round(currentOffset / SCREEN_WIDTH);
-
-//     // Enable vertical scrolling only for the first right item
-//     const isFirstRightItem = index === 1;
-//     setVerticalScrollEnabled(isFirstRightItem);
-//   };
-
-//   // Combine leftItem and rightItems into one array
-//   const combinedData = [
-//     { type: 'left', content: 'Left Screen' }, // Left item
-//     ...rightScrollData.map((_, index) => ({ type: 'right', content: `Right Screen ${index + 1}` })), // Right items
-//   ];
-
-//   return (
-//     <View style={styles.itemContainer}>
-//       <ScrollView 
-//         ref={scrollViewRef}
-//         horizontal
-//         pagingEnabled
-//         showsHorizontalScrollIndicator={false}
-//         nestedScrollEnabled={true}
-//         onScroll={handleScroll}
-//         scrollEventThrottle={16}
-//         style={styles.scrollView}
-//       >
-//         {combinedData.map((subItem, index) => (
-//           <View 
-//             key={index} 
-//             style={[
-//               styles.subItemContainer, 
-//               subItem.type === 'left' ? styles.leftItem : styles.rightItem
-//             ]}
-//           >
-//             <Text>{subItem.content}</Text>
-//           </View>
-//         ))}
-//       </ScrollView>
-//     </View>
-//   );
-// };
-
-// const App = () => {
-//   const [verticalScrollEnabled, setVerticalScrollEnabled] = useState(true);
-
-//   return (
-//     <FlatList
-//       data={verticalData}
-//       renderItem={({ item, index }) => (
-//         <Item 
-//           item={item} 
-//           setVerticalScrollEnabled={setVerticalScrollEnabled} 
-//           initialScrollIndex={1} // Start horizontal scroll at the first right item
-//         />
-//       )}
-//       keyExtractor={(item, index) => index.toString()}
-//       pagingEnabled
-//       showsVerticalScrollIndicator={false}
-//       snapToAlignment="start"
-//       decelerationRate="fast"
-//       scrollEnabled={verticalScrollEnabled} // Control vertical scrolling
-//       getItemLayout={(data, index) => (
-//         { length: SCREEN_HEIGHT, offset: SCREEN_HEIGHT * index, index }
-//       )}
-//       contentContainerStyle={styles.flatListContainer}
-//     />
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   flatListContainer: {
-//     paddingBottom: 0, // Ensure that there is no padding at the bottom
-//   },
-//   itemContainer: {
-//     height: SCREEN_HEIGHT,
-//     width: SCREEN_WIDTH,
-//     backgroundColor: '#f0f0f0',
-//   },
-//   scrollView: {
-//     flex: 1,
-//   },
-//   subItemContainer: {
-//     width: SCREEN_WIDTH,
-//     height: SCREEN_HEIGHT,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     padding: 20,
-//   },
-//   leftItem: {
-//     backgroundColor: '#d0d0d0',
-//   },
-//   rightItem: {
-//     backgroundColor: '#e0e0e0',
-//   },
-// });
-
-// export default App;
-
-
-
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, FlatList, ScrollView, Dimensions, StyleSheet, SafeAreaView } from 'react-native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
@@ -271,8 +147,10 @@ const rightScrollData = [...Array(5).keys()]; // Example data for right items in
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
+const roundedScreenWidth = Math.round(SCREEN_WIDTH);
+
 const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
-  const scrollViewRef = useRef(null);
+  const scrollViewRef = useRef<any>(null);
   const [isLeftScreen, setIsLeftScreen] = useState(false);
 
   const startIndex = 2; // Start at the first right item (after 2 left screens)
@@ -291,8 +169,11 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
   // handle item position on x-axis
   const handleScroll = (event: any) => {
     const currentOffset = event.nativeEvent.contentOffset.x;
-    const isAtLeftScreen = currentOffset < SCREEN_WIDTH ; // If scrolled to the left item
-    const isAtRightScreen = currentOffset > SCREEN_WIDTH * 2; 
+    const roundedOffset = Math.ceil(currentOffset)
+    console.log("Current Offset:", roundedOffset);
+    console.log("Screen Width:", roundedScreenWidth);
+    const isAtLeftScreen = roundedOffset < roundedScreenWidth * 2; // If scrolled to the left item
+    const isAtRightScreen = roundedOffset > roundedScreenWidth * 2; 
     console.log("IS AT LEFT SCREEN?", isAtLeftScreen)
     console.log("IS AT RIGHT SCREEN?", isAtRightScreen)
     setIsLeftScreen(isAtLeftScreen);
@@ -374,12 +255,10 @@ const styles = StyleSheet.create({
     height: 773,
     width: SCREEN_WIDTH,
     backgroundColor: '#f0f0f0',
-    borderWidth: 1,
-    borderColor: 'red',
   },
   subItemContainer: {
     width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
+  
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
