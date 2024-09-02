@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, FlatList, ScrollView, Dimensions, StyleSheet, SafeAreaView } from 'react-native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import NewsOverview from '@/components/shared/NewsOverview';
+import { news } from "../../constants/NewsData"
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-const verticalData = [...Array(10).keys()]; // Example data for vertical FlatList
-const rightScrollData = [...Array(5).keys()]; // Example data for right items in the horizontal scroll
+const verticalData = news // Example data for vertical FlatList
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -43,13 +45,12 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
 
   // Combine two leftItems and rightItems into one array
   const combinedData = [
-    { type: 'left', content: 'Left Screen 1' }, // First left item
-    { type: 'left', content: 'Left Screen 2' }, // Second left item
-    ...rightScrollData.map((_, index) => ({ type: 'right', content: `Right Screen ${index + 1}` })), // Right items
+    ...verticalData[index].history.reverse().map((item:any, index:any) => ({type: "left", contentTitle: item.historyTitle, contentDescription: item.historyDescription, id: item.id, contentImage: item.historyImage, historyItem: item.historyItems})), // Left items
+    ...verticalData[index].context.map((item:any, index:any) => ({ type: 'right', contentTitle: item.contextTitle, contentDesciption: item.contextDescription, id: item.id, contentImage: item.contextImage, historyItems: [] })), // Right items
   ];
 
   return (
-    <SafeAreaView style={[styles.itemContainer, { height: itemHeight }]}>
+    <View style={[styles.itemContainer, {height: itemHeight}]}>
       <ScrollView
         ref={scrollViewRef}
         horizontal
@@ -65,15 +66,20 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
             style={[
               styles.subItemContainer,
               subItem.type === 'left' ? styles.leftItem : styles.rightItem,
-              index === 0 && subItem.type === 'left' && styles.firstItemLeft, // Special style for the first item's left screens
-              index === 0 && subItem.type === 'right' && styles.firstItemRight, // Special style for the first item's right screens
             ]}
           >
-            <Text>{subItem.content}</Text>
+             {/* Conditionally render the custom component */}
+             {subIndex === 0 ? (
+              <NewsOverview title={subItem.contentTitle} image={""} />
+            ) : subIndex === 2 ? (
+              <NewsOverview item={subItem} />
+            ) : (
+              <Text>{subItem.contentTitle}</Text>
+            )}
           </View>
         ))}
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -83,7 +89,8 @@ const WhatsNew = () => {
   let itemHeight = SCREEN_HEIGHT - tabBarHeight;
 
   return (
-    <FlatList
+    <View style={{flex: 1, backgroundColor: '#211C34'}}>
+      <FlatList
       data={verticalData}
       renderItem={({ item, index }) => (
         <Item
@@ -105,6 +112,7 @@ const WhatsNew = () => {
       )}
       contentContainerStyle={styles.flatListContainer}
     />
+    </View>
   );
 };
 
@@ -115,26 +123,22 @@ const styles = StyleSheet.create({
   itemContainer: {
     height: 773,
     width: SCREEN_WIDTH,
-    backgroundColor: '#f0f0f0',
+    padding:0,
+    flex: 1,
+    backgroundColor: '#211C34'
   },
   subItemContainer: {
     width: SCREEN_WIDTH,
-  
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    padding:0,
+   
   },
   leftItem: {
     backgroundColor: '#d0d0d0',
   },
   rightItem: {
     backgroundColor: '#e0e0e0',
-  },
-  firstItemLeft: {
-    backgroundColor: '#ffa07a', // Different background for the first item's left screens
-  },
-  firstItemRight: {
-    backgroundColor: '#20b2aa', // Different background for the first item's right screens
   },
 });
 
