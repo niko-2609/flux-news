@@ -23,7 +23,7 @@ export default NewsOverview
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Platform.OS === "android" ? moderateScale(25) : moderateScale(0),
+        paddingTop: 0,
         alignItems: 'center',
         backgroundColor: '#211C34',
         height: '100%',
@@ -31,13 +31,13 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         paddingHorizontal: moderateScale(10),
-        marginVertical: moderateScale(12)
+        marginVertical: moderateScale(10)
     },
     heading: {
         fontSize: 52,
         fontWeight: '600',
         textAlign: 'center',
-        marginBottom: moderateScale(12),
+        marginBottom: moderateScale(10),
         color: '#BE4848',
     },
     subHeading: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         textAlign: 'center',
         color: 'white',
-        letterSpacing: 3,
-        lineHeight: moderateScale(50)
+        letterSpacing: Platform.OS === "android" ? 2 : 3,
+        lineHeight: Platform.OS === "android" ?moderateScale(40): moderateScale(50)
     }
 })
