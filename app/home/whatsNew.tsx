@@ -37,7 +37,7 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
     console.log("Current Offset:", roundedOffset);
     console.log("Screen Width:", roundedScreenWidth);
     const isAtLeftScreen = roundedOffset < roundedScreenWidth * 2; // If scrolled to the left item
-    const isAtRightScreen = roundedOffset > roundedScreenWidth * 2; 
+    const isAtRightScreen = roundedOffset > roundedScreenWidth * 3; 
     console.log("IS AT LEFT SCREEN?", isAtLeftScreen)
     console.log("IS AT RIGHT SCREEN?", isAtRightScreen)
     setIsLeftScreen(isAtLeftScreen);

@@ -7,7 +7,7 @@ const NewsOverview = (props: any) => {
     return (
         <View style={styles.container}>
             <View>
-                <Image source={props?.item?.contentImage} style={{ width: scale(350), height: 450 }} resizeMode='contain' />
+                <Image source={props?.item?.contentImage} style={{ width: scale(350), height: Platform.OS === 'android' ? verticalScale(380) : verticalScale(360) }} resizeMode='contain' />
 
             </View>
             <View style={styles.textContainer}>
