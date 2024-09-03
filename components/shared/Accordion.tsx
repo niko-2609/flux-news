@@ -79,10 +79,11 @@ const styles = StyleSheet.create({
     },
     accContentContainer: {
         marginTop: 0,
+        flex:1,
         backgroundColor: '#76B688',
         marginBottom: moderateScale(3),
         borderRadius: moderateScale(4),
-        paddingHorizontal: moderateScale(4)
+        paddingHorizontal: moderateScale(20)
     },
     accContentText:{ 
         fontSize: moderateScale(24),
