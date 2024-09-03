@@ -1,14 +1,12 @@
 import { View, Text, FlatList, Dimensions, StyleSheet } from 'react-native'
 import React from 'react'
 import ListItem from '@/components/shared/ListItem'
-
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const Tag = () => {
-
     return (
-        <View style={styles.rootContainer}>
+        <View>
             <FlatList
-                data={[1,2,3,4,5,6]}
+                data={[]}
                 renderItem={({ item, index }: any) => (
                     <ListItem />
                 )}
@@ -27,13 +25,10 @@ const Tag = () => {
     )
 }
 
-export default Tag;
-
+export default Tag
 
 const styles = StyleSheet.create({
-  flatListContainer: {
-    paddingBottom: 0, // Ensure that there is no padding at the bottom
-  },
-  rootContainer:{
-  }
+    flatListContainer: {
+        paddingBottom: 0, // Ensure that there is no padding at the bottom
+    },
 })

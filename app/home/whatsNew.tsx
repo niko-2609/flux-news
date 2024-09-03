@@ -5,6 +5,7 @@ import NewsOverview from '@/components/shared/NewsOverview';
 import { news } from "../../constants/NewsData"
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import InfoScreen from '@/components/shared/InfoScreen';
+import HistoryScreen from '@/components/shared/HistoryScreen';
 
 const verticalData = news // Example data for vertical FlatList
 
@@ -17,7 +18,7 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
   const scrollViewRef = useRef<any>(null);
   const [isLeftScreen, setIsLeftScreen] = useState(false);
 
-  const startIndex = 2; // Start at the first right item (after 2 left screens)
+  const startIndex = 1; // Start at the first right item (after 2 left screens)
 
   useEffect(() => {
     setTimeout(() => {
@@ -36,8 +37,8 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
     const roundedOffset = Math.ceil(currentOffset)
     console.log("Current Offset:", roundedOffset);
     console.log("Screen Width:", roundedScreenWidth);
-    const isAtLeftScreen = roundedOffset < roundedScreenWidth * 2; // If scrolled to the left item
-    const isAtRightScreen = roundedOffset > roundedScreenWidth * 3; 
+    const isAtLeftScreen = roundedOffset < roundedScreenWidth * 1; // If scrolled to the left item
+    const isAtRightScreen = roundedOffset > roundedScreenWidth * 1.5; 
     console.log("IS AT LEFT SCREEN?", isAtLeftScreen)
     console.log("IS AT RIGHT SCREEN?", isAtRightScreen)
     setIsLeftScreen(isAtLeftScreen);
@@ -46,8 +47,8 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
 
   // Combine two leftItems and rightItems into one array
   const combinedData = [
-    ...verticalData[index].history.reverse().map((item:any, index:any) => ({type: "left", contentTitle: item.historyTitle, contentDescription: item.historyDescription, id: item.id, contentImage: item.historyImage, historyItem: item.historyItems})), // Left items
-    ...verticalData[index].context.map((item:any, index:any) => ({ type: 'right', contentTitle: item.contextTitle, contentDesciption: item.contextDescription, id: item.id, contentImage: item.contextImage, historyItems: [] })), // Right items
+    ...verticalData[index].history.reverse().map((item:any, index:any) => ({type: "left", contentTitle: item.historyTitle, contentDescription: item.historyDescription, id: item.id, contentImage: item.historyImage, historyItem: item.historyItems, tag: item.tags})), // Left items
+    ...verticalData[index].context.map((item:any, index:any) => ({ type: 'right', contentTitle: item.contextTitle, contentDesciption: item.contextDescription, id: item.id, contentImage: item.contextImage, historyItems: [], tag:[] })), // Right items
   ];
 
   return (
@@ -71,8 +72,8 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
           >
              {/* Conditionally render the custom component */}
              {subIndex === 0 ? (
-              <NewsOverview title={subItem.contentTitle} image={""} />
-            ) : subIndex === 2 ? (
+              <HistoryScreen item={subItem} />
+            ) : subIndex === 1 ? (
               <NewsOverview item={subItem} />
             ) : (
               <InfoScreen item={subItem}/>
@@ -99,7 +100,7 @@ const WhatsNew = () => {
           index={index}
           setVerticalScrollEnabled={setVerticalScrollEnabled}
           itemHeight={itemHeight}
-          scrollIndex={index === 0 ? 2 : undefined} // Start horizontal scroll at rightItems[0] for the first item
+          scrollIndex={index === 0 ? 1 : undefined} // Start horizontal scroll at rightItems[0] for the first item
         />
       )}
       keyExtractor={(item, index) => index.toString()}
