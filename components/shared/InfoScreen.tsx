@@ -6,7 +6,7 @@ const InfoScreen = (props:any) => {
     return (
         <View style={styles.container}>
             <View>
-                <Image source={props?.item?.contentImage} style={{ width: scale(350), height: 400 }} resizeMode='contain' />
+                <Image source={props?.item?.contentImage} style={{ width: Platform.OS === 'android' ? scale(350) : scale(350), height: Platform.OS === 'android' ? verticalScale(344) : verticalScale(317) }} resizeMode='contain' />
             </View>
             <Text style={styles.title}>{props?.item?.contentTitle}</Text>
             <View style={styles.line}>
