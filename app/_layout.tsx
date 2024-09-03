@@ -4,12 +4,14 @@ import { StatusBar, StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { KronaOne_400Regular } from '@expo-google-fonts/krona-one';
+import { Monda_400Regular } from '@expo-google-fonts/monda'
 
 
 export default function Layout(props:any) {
     const [ isEnabled, setIsEnabled ] = useState<any>(false)
     const [fontsLoaded] = useFonts({
       KronaOne_400Regular,
+      Monda_400Regular
     });
   
     if (!fontsLoaded) {

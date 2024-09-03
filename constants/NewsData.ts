@@ -45,49 +45,61 @@ export const news = [
     history: [
       {
         id: 1,
-        historyTitle: "Some title for first left screen",
-        historyDescription: "Some history descriptio",
-        historyItems: [],
-        historyImage: "some-image-url",
-      },
-      {
-        id: "2",
         historyTitle: "Peak into the Past",
         historyDescription: "",
         historyItems: [
           {
             id: "1",
-            infoTitle: "1929 Market Crash",
-            infoDescription: "A comparison with the 1929 market crash.",
-            tags: [
-              {
-                tagTitle: "Finance",
-                tagLink: "finance-history-1929.html",
-              },
-            ],
+            infoTitle: "Silver for Imane Khelif",
+            infoDescription: "Imane Khelif won a silver medal at the 2022 IBA Women's World Boxing Championships",
           },
           {
             id: "2",
-            infoTitle: "2008 Financial Crisis",
-            infoDescription: "Lessons learned from the 2008 financial crisis.",
-            tags: [
-              {
-                tagTitle: "Economics",
-                tagLink: "economics-2008.html",
-              },
-            ],
+            infoTitle: "Disqualification for Khelif",
+            infoDescription: "Khelif and Lin Yu-ting were disqualified from 2023 IBA World Boxing Championships for failing gender eligibility tests before gold medal match.",
           },
           {
             id: "3",
-            infoTitle: "2020 Pandemic Impact",
-            infoDescription: "The impact of the COVID-19 pandemic on the market.",
-            tags: [
-              {
-                tagTitle: "Global Economy",
-                tagLink: "global-economy-2020.html",
-              },
-            ],
+            infoTitle: "Allowed to compete",
+            infoDescription: "Khelif and Lin Yu-ting are allowed to compete at the 2024 Paris Olympics after being cleared by the IOC task force running the boxing tournament",
           },
+        ],
+        tags: [
+          {
+            tagId: 1,
+            tagName: "Imane Khelif",
+            tagLink: "/someUrl"
+          },
+          { 
+            tagId: 2,
+            tagName: "Lin Yu-ting",
+            tagLink: "/someUrl"
+          },
+          {
+            tagId: 3,
+            tagName: "IBA World Boxing Championship",
+            tagLink: "/someUrl"
+          },
+          {
+            tagId: 4,
+            tagName: "2024 Paris Olympics",
+            tagLink: "/someUrl"
+          },
+          // {
+          //   tagId: 5,
+          //   tagName: "Sample tag",
+          //   tagLink: "/someUrl"
+          // },
+          // {
+          //   tagId: 6,
+          //   tagName: "Sample tag",
+          //   tagLink: "/someUrl"
+          // },
+          // {
+          //   tagId: 7,
+          //   tagName: "Sample tag",
+          //   tagLink: "/someUrl"
+          // }
         ],
         historyImage: "",
       },
@@ -136,48 +148,23 @@ export const news = [
     history: [
       {
         id: 1,
-        historyTitle: "Some title for first left screen",
-        historyDescription: "Some history descriptio",
-        historyItems: [],
-        historyImage: "some-image-url",
-      },
-      {
-        id: "2",
         historyTitle: "Peak into the Past",
         historyDescription: "",
         historyItems: [
           {
             id: "1",
-            infoTitle: "1929 Market Crash",
-            infoDescription: "A comparison with the 1929 market crash.",
-            tags: [
-              {
-                tagTitle: "Finance",
-                tagLink: "finance-history-1929.html",
-              },
-            ],
+            infoTitle: "Silver for Imane Khelif",
+            infoDescription: "Imane Khelif won a silver medal at the 2022 IBA Women's World Boxing Championships",
           },
           {
             id: "2",
-            infoTitle: "2008 Financial Crisis",
-            infoDescription: "Lessons learned from the 2008 financial crisis.",
-            tags: [
-              {
-                tagTitle: "Economics",
-                tagLink: "economics-2008.html",
-              },
-            ],
+            infoTitle: "Disqualification for Khelif",
+            infoDescription: "Khelif and Lin Yu-ting were disqualified from 2023 IBA World Boxing Championships for failing gender eligibility tests before gold medal match.",
           },
           {
             id: "3",
-            infoTitle: "2020 Pandemic Impact",
-            infoDescription: "The impact of the COVID-19 pandemic on the market.",
-            tags: [
-              {
-                tagTitle: "Global Economy",
-                tagLink: "global-economy-2020.html",
-              },
-            ],
+            infoTitle: "Allowed to compete",
+            infoDescription: "Khelif and Lin Yu-ting are allowed to compete at the 2024 Paris Olympics after being cleared by the IOC task force running the boxing tournament",
           },
         ],
         historyImage: "",
