@@ -60,8 +60,7 @@ const styles = StyleSheet.create({
       width: '100%',
     },
     tagParentContainer:{
-      justifyContent: 'flex-end',
-      height: '45%'
+      marginTop: moderateScale(20)
     },
     tagContainer:{
       flexDirection: 'row',

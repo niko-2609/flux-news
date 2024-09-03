@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
     tagItemContainer: {
         borderRadius: moderateScale(4),
         backgroundColor: '#D5E090',
-        paddingHorizontal: moderateScale(25),
-        paddingVertical: moderateScale(20)
+        paddingHorizontal: moderateScale(5),
+        paddingVertical: moderateScale(7)
     },
     tagItemText:{
         fontSize: moderateScale(20)
