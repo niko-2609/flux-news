@@ -14,8 +14,7 @@ const ListItem = (props:any) => {
   console.log("inside list item screen")
   const tabBarHeight = useBottomTabBarHeight();
   let itemHeight = SCREEN_HEIGHT - tabBarHeight;
-  const [ selectedVal, setSelectedVal ] = useState<any>("upsc")
-  const [ selectedData, setSelectedData ] = useState<any>({})
+
 
     return (
       <SafeAreaView style={[styles.itemContainer, {height: itemHeight}]}>
@@ -23,24 +22,21 @@ const ListItem = (props:any) => {
         <Text style={styles.feedItemText}>YOUR PICKS</Text>
         <Pressable
         onPress={() => {
-          setSelectedVal("upsc")
-          props?.setData(selectedVal)
+          props?.setData(1)
         }}
         >
         <Text style={[styles.feedItemText, {color: '#706EB5'}]}>UPSC</Text>
         </Pressable>
         <Pressable
         onPress={() => {
-          setSelectedVal("ms dhoni")
-          props?.setData(selectedVal)
+          props?.setData(2)
         }}
         >
         <Text style={[styles.feedItemText, {color: '#BBB960'}]}>MS DHONI</Text>
         </Pressable>
         <Pressable
         onPress={() => {
-          setSelectedVal("nifty")
-          props?.setData(selectedVal)
+          props?.setData(3)
         }}
         >
         <Text style={[styles.feedItemText, {color: '#D56D6D'}]}>NIFTY</Text>

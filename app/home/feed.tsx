@@ -14,8 +14,9 @@ useEffect(() => {
     setData(reqData)
 },[])
 
-const updateData = (feedName:string) => {
-    let filteredItem = feed.filter((item:any) => item?.feedTitle === feedName)
+useEffect(() => {},[data])
+const updateData = (feedId:any) => {
+    let filteredItem = feed.filter((item:any) => item?.id === feedId)
     setData(filteredItem[0]?.feedItems)
 }
     return (
