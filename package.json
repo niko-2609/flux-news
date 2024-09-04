@@ -18,6 +18,7 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@expo-google-fonts/krona-one": "^0.2.3",
+    "@expo-google-fonts/lalezar": "^0.2.3",
     "@expo-google-fonts/monda": "^0.2.3",
     "@expo/vector-icons": "^14.0.2",
     "@mui/icons-material": "^6.0.1",

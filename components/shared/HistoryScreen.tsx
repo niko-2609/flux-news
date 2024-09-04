@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
       width: '100%',
     },
     tagParentContainer:{
-      marginTop: moderateScale(20)
+      marginTop: moderateScale(40)
     },
     tagContainer:{
       flexDirection: 'row',
