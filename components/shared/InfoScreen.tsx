@@ -11,7 +11,7 @@ const InfoScreen = (props:any) => {
             <Text style={styles.title}>{props?.item?.contentTitle}</Text>
             <View style={styles.line}>
             </View>
-            <View>
+            <View style={{flex: 1}}>
                 <Text style={styles.description}>{props?.item?.contentDesciption}</Text>
             </View>
         </View>

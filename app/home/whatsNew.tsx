@@ -1,3 +1,5 @@
+//WORKING VERSION - DO NOT DELETE
+
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, FlatList, ScrollView, Dimensions, StyleSheet, SafeAreaView } from 'react-native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
@@ -14,7 +16,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const roundedScreenWidth = Math.round(SCREEN_WIDTH);
 
-const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
+const Item = ({ item, index, setVerticalScrollEnabled, itemHeight, isScrollingDown }: any) => {
   const scrollViewRef = useRef<any>(null);
   const [isLeftScreen, setIsLeftScreen] = useState(false);
 
@@ -31,18 +33,16 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
     }, 0);
   }, []);
 
+
+
   // handle item position on x-axis
   const handleScroll = (event: any) => {
-    const currentOffset = event.nativeEvent.contentOffset.x;
-    const roundedOffset = Math.ceil(currentOffset)
-    console.log("Current Offset:", roundedOffset);
-    console.log("Screen Width:", roundedScreenWidth);
-    const isAtLeftScreen = roundedOffset < roundedScreenWidth * 1; // If scrolled to the left item
-    const isAtRightScreen = roundedOffset > roundedScreenWidth * 1.5; 
-    console.log("IS AT LEFT SCREEN?", isAtLeftScreen)
-    console.log("IS AT RIGHT SCREEN?", isAtRightScreen)
+    const currentXOffset = event.nativeEvent.contentOffset.x;
+    const roundedXOffset = Math.ceil(currentXOffset)
+    const isAtLeftScreen = roundedXOffset < roundedScreenWidth * 1; // If scrolled to the left item
     setIsLeftScreen(isAtLeftScreen);
-    setVerticalScrollEnabled(!isAtLeftScreen && !isAtRightScreen); // Disable vertical scroll if on left screen
+    setVerticalScrollEnabled(!isAtLeftScreen); // Disable vertical scroll if on left screen
+   
   };
 
   // Combine two leftItems and rightItems into one array
@@ -50,6 +50,16 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
     ...verticalData[index].history.reverse().map((item:any, index:any) => ({type: "left", contentTitle: item.historyTitle, contentDescription: item.historyDescription, id: item.id, contentImage: item.historyImage, historyItem: item.historyItems, tag: item.tags})), // Left items
     ...verticalData[index].context.map((item:any, index:any) => ({ type: 'right', contentTitle: item.contextTitle, contentDesciption: item.contextDescription, id: item.id, contentImage: item.contextImage, historyItems: [], tag:[] })), // Right items
   ];
+
+  //   // Scroll to the first right item on the next vertical item when scrolling down
+  useEffect(() => {
+    if (isScrollingDown && scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({
+        x: SCREEN_WIDTH * startIndex, // First right screen
+        animated: true,
+      });
+    }
+  }, [isScrollingDown]);
 
   return (
     <View style={[styles.itemContainer, {height: itemHeight}]}>
@@ -85,15 +95,46 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight }: any) => {
   );
 };
 
+
+
 const WhatsNew = () => {
-  const [verticalScrollEnabled, setVerticalScrollEnabled] = useState(true);
+    const [verticalScrollEnabled, setVerticalScrollEnabled] = useState(true);
+  const [localIdx, setLocalIdx] = useState<number>(0);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(false);  // Track scroll direction
   const tabBarHeight = useBottomTabBarHeight();
-  let itemHeight = SCREEN_HEIGHT - tabBarHeight;
+  const itemHeight = SCREEN_HEIGHT - tabBarHeight;
+  const flatListRef = useRef<any>(null);
+
+  const onViewableItemsChanged = ({ viewableItems }: any) => {
+    if (viewableItems.length > 0) {
+      setLocalIdx(viewableItems[0].index);
+    }
+  };
+
+  // Detect scroll direction
+  const handleScroll = (event: any) => {
+    const yOffset = event.nativeEvent.contentOffset.y;
+    const previousIndex = localIdx;
+    const newIndex = Math.ceil(yOffset / (itemHeight/2));
+
+    console.log("Y OFFSET", yOffset)
+    console.log("NEW INDEX", newIndex)
+    console.log("ITEM HEIGHT", itemHeight)
+    if (newIndex > previousIndex) {
+      setIsScrollingDown(true); // Scrolling down
+      setIsScrollingUp(false);
+    } else {
+      setIsScrollingDown(false);
+      setIsScrollingUp(true) // Scrolling up
+    }
+  };
 
   return (
     <View style={{flex: 1, backgroundColor: '#211C34'}}>
       <FlatList
       data={verticalData}
+      ref={flatListRef}
       renderItem={({ item, index }) => (
         <Item
           item={item}
@@ -101,18 +142,24 @@ const WhatsNew = () => {
           setVerticalScrollEnabled={setVerticalScrollEnabled}
           itemHeight={itemHeight}
           scrollIndex={index === 0 ? 1 : undefined} // Start horizontal scroll at rightItems[0] for the first item
+          isScrollingDown={isScrollingDown}
         />
       )}
-      keyExtractor={(item, index) => index.toString()}
+      keyExtractor={(_, index) => index.toString()}
       pagingEnabled
       showsVerticalScrollIndicator={false}
       snapToAlignment="center"
       decelerationRate="fast"
       scrollEnabled={verticalScrollEnabled} // Control vertical scrolling
       getItemLayout={(data, index) => ( // Optimization
-        { length: SCREEN_HEIGHT, offset: SCREEN_HEIGHT * index, index }
+        { length: itemHeight, offset: itemHeight * index, index }
       )}
       contentContainerStyle={styles.flatListContainer}
+      onViewableItemsChanged={onViewableItemsChanged}
+      viewabilityConfig={{
+        itemVisiblePercentThreshold: 50,
+      }}
+      onScroll={handleScroll}
     />
     </View>
   );

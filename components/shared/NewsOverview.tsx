@@ -27,11 +27,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#211C34',
         height: '100%',
-        width: '100%'
+        width: '100%',
+        borderColor: 'red',
+        borderWidth: 2
     },
     textContainer: {
         paddingHorizontal: moderateScale(10),
-        marginVertical: moderateScale(10)
+        marginVertical: moderateScale(10),
     },
     heading: {
         fontSize: 52,
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         textAlign: 'center',
         color: 'white',
-        letterSpacing: Platform.OS === "android" ? 2 : 3,
-        lineHeight: Platform.OS === "android" ?moderateScale(40): moderateScale(50)
+        // letterSpacing: Platform.OS === "android" ? 2 : 3,
+        // lineHeight: Platform.OS === "android" ?moderateScale(40): moderateScale(50)
     }
 })
