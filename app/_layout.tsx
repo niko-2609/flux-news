@@ -4,7 +4,7 @@ import { StatusBar, StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { KronaOne_400Regular } from '@expo-google-fonts/krona-one';
-import { Monda_400Regular } from '@expo-google-fonts/monda';
+import { Monda_400Regular, Monda_700Bold } from '@expo-google-fonts/monda';
 import { Lalezar_400Regular} from '@expo-google-fonts/lalezar';
 
 
@@ -13,6 +13,7 @@ export default function Layout(props:any) {
     const [fontsLoaded] = useFonts({
       KronaOne_400Regular,
       Monda_400Regular,
+      Monda_700Bold,
       Lalezar_400Regular
     });
   

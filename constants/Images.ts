@@ -1,4 +1,5 @@
 import TitleImage from "@/assets/fluxImages/boxing.png"
+import TitleImage2 from '@/assets/fluxImages/boxing2.png'
 import BoxingFighting from '@/assets/fluxImages/boxing_fighting.png'
 import BoxingShouting from '@/assets/fluxImages/boxing_shouting.png'
 import BoxingSitting from '@/assets/fluxImages/boxing_sitting.png'
@@ -14,6 +15,7 @@ import NIFTY2 from '@/assets/fluxImages/nifty2.png'
 
 export {
     TitleImage,
+    TitleImage2,
     BoxingFighting,
     BoxingShouting,
     BoxingSitting,

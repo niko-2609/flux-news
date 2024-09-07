@@ -1,4 +1,4 @@
-import { BoxingFighting, BoxingShouting, BoxingSitting, DSD, Reactions, TitleImage } from "./Images";
+import { BoxingFighting, BoxingShouting, BoxingSitting, DSD, Reactions, TitleImage2 } from "./Images";
 
 // newsData.js
 export const news = [
@@ -7,9 +7,9 @@ export const news = [
     context: [
       {
         id: "1",
-        contextTitle: "Olympic Boxing Controversy",
-        contextDescription: "The fight that sparked a debate!",
-        contextImage: TitleImage
+        contextTitle: "Olympic Boxing Controversy, The fight that sparked a debate!",
+        contextDescription: "Algerian boxer Imane Khelif won her first match at the Paris 2024 Olympics after Italian opponent Angela Carini withdrew due to severe nose pain. Khelif’s participation sparked controversy due to her previous disqualification over gender eligibility, raising concerns about fairness in women's sports. The situation has drawn mixed reactions.",
+        contextImage: TitleImage2
       },
       {
         id: "2",
@@ -85,21 +85,6 @@ export const news = [
             tagName: "2024 Paris Olympics",
             tagLink: "/someUrl"
           },
-          // {
-          //   tagId: 5,
-          //   tagName: "Sample tag",
-          //   tagLink: "/someUrl"
-          // },
-          // {
-          //   tagId: 6,
-          //   tagName: "Sample tag",
-          //   tagLink: "/someUrl"
-          // },
-          // {
-          //   tagId: 7,
-          //   tagName: "Sample tag",
-          //   tagLink: "/someUrl"
-          // }
         ],
         historyImage: "",
       },

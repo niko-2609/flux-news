@@ -3,16 +3,14 @@ import React from 'react'
 import { scale, verticalScale, moderateScale } from 'react-native-size-matters'
 
 const NewsOverview = (props: any) => {
-    console.log("PROPS", props)
     return (
         <View style={styles.container}>
             <View>
-                <Image source={props?.item?.contentImage} style={{ width: scale(350), height: Platform.OS === 'android' ? verticalScale(380) : verticalScale(360) }} resizeMode='contain' />
-
+                <Image source={props?.item?.contentImage} style={{ width: Platform.OS === 'android' ? scale(350) : scale(360), height: Platform.OS === "android" ? verticalScale(344) : verticalScale(325) }} resizeMode='contain' />
             </View>
             <View style={styles.textContainer}>
                 <Text style={styles.heading}>{props?.item?.contentTitle}</Text>
-                <Text style={styles.subHeading}>{props?.item?.contentDesciption}</Text>
+                <Text style={styles.description}>{props?.item?.contentDesciption}</Text>
             </View>
         </View>
     )
@@ -23,31 +21,32 @@ export default NewsOverview
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 0,
+        width: '100%',
+        height: '100%',
+        paddingTop: Platform.OS === "android" ? moderateScale(0) : moderateScale(0),
         alignItems: 'center',
         backgroundColor: '#211C34',
-        height: '100%',
-        width: '100%',
-        borderColor: 'red',
-        borderWidth: 2
     },
     textContainer: {
-        paddingHorizontal: moderateScale(10),
+        // paddingHorizontal: moderateScale(10),
         marginVertical: moderateScale(10),
     },
     heading: {
-        fontSize: 52,
-        fontWeight: '600',
+        fontSize: moderateScale(24),
+        fontWeight: '700',
         textAlign: 'center',
-        marginBottom: moderateScale(10),
+        marginBottom: moderateScale(3),
         color: '#BE4848',
+        fontFamily: "Monda_700Bold"
     },
-    subHeading: {
-        fontSize: moderateScale(40),
+    description: {
+        fontSize: moderateScale(17),
         fontWeight: '500',
         textAlign: 'center',
         color: 'white',
+        fontFamily: "Monda_400Regular"
         // letterSpacing: Platform.OS === "android" ? 2 : 3,
         // lineHeight: Platform.OS === "android" ?moderateScale(40): moderateScale(50)
     }
 })
+
