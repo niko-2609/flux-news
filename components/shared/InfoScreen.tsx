@@ -52,7 +52,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingTop: moderateScale(16),
         paddingHorizontal: moderateScale(3),
-        letterSpacing: 2,
-        lineHeight: Platform.OS === "android" ? 25 : 30
+        letterSpacing: 1.5,
+        lineHeight: Platform.OS === "android" ? 25 : 30,
+        fontFamily: "Monda_400Regular"
+
     }
 })
