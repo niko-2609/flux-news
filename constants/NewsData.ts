@@ -1,4 +1,4 @@
-import { BoxingFighting, BoxingShouting, BoxingSitting, DSD, Reactions, TitleImage2 } from "./Images";
+import { BoxingFighting, BoxingShouting, BoxingSitting, DSD, Reactions, TAG1, TAG2, TAG3, TitleImage2 } from "./Images";
 
 // newsData.js
 export const news = [
@@ -68,9 +68,28 @@ export const news = [
           {
             tagId: 1,
             tagName: "Imane Khelif",
-            tagLink: "imane"
+            tagLink: "imane",
+            tagData: [{
+              id: 1,
+              contentTitle: "Imane Khelif Files Harassment Complaint Against X",
+              contentDesciption: "Algerian boxer Imane Khelif has filed a legal complaint against X, alleging harassment and a 'misogynistic, racist and sexist campaign' following her Olympic gold medal win in Paris",
+              contentImage: TAG1
+            },
+            {
+              id: 2,
+              contentTitle: "Imane Khelif Wins Gold Medal",
+              contentDesciption: "Imane Khelif secured the gold medal in the women's welterweight division at the Paris Olympics despite being at the center of a gender eligibility controversy",
+              contentImage: TAG2
+            },
+            {
+              id: 3,
+              contentTitle: "'I am a Woman': Imane Khelif Responds",
+              contentDesciption: 'Algerian boxer Imane Khelif, after winning gold at the Paris Olympics, firmly declared, "I am a woman like any other," addressing gender scrutiny. She emphasized her identity and resilience against online attacks, asserting her rightful place in the sport.',
+              contentImage: TAG3
+            }
+            ]
           },
-          { 
+          {
             tagId: 2,
             tagName: "Lin Yu-ting",
             tagLink: "lin"

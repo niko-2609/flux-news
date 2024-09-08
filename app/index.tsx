@@ -1,10 +1,9 @@
-import { Link, useNavigation } from 'expo-router';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Link } from 'expo-router';
+import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { moderateScale } from 'react-native-size-matters';
 
 export default function Root() {
-  const navigation = useNavigation<any>()
   return (
     <SafeAreaView style={styles.rootContainer}>
       <View style={styles.textContainer}>
@@ -19,8 +18,7 @@ export default function Root() {
       </View>
       <Link href="/home/whatsNew">
         <View style={styles.launchButtonContainer}>
-
-            <Text>LAUNCH</Text>
+          <Text style={{ fontSize: moderateScale(24), fontWeight: 500 }}>Get Started!</Text>
         </View>
       </Link>
     </SafeAreaView>
@@ -65,7 +63,6 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(16),
     borderRadius: moderateScale(8),
     cursor: 'pointer',
-    // height: moderateScale(60)
   },
   buttonText: {
     fontSize: moderateScale(32),
