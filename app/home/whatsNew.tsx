@@ -7,7 +7,7 @@ import NewsOverview from '@/components/shared/NewsOverview';
 import { news } from "../../constants/NewsData"
 import InfoScreen from '@/components/shared/InfoScreen';
 import HistoryScreen from '@/components/shared/HistoryScreen';
-import { useFocusEffect, useLocalSearchParams } from 'expo-router';
+
 
 const verticalData = news // Example data for vertical FlatList
 
