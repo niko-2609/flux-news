@@ -19,11 +19,6 @@ const roundedScreenWidth = Math.round(SCREEN_WIDTH);
 const Item = ({ item, index, setVerticalScrollEnabled, itemHeight, isScrollingDown }: any) => {
   const scrollViewRef = useRef<any>(null);
   const [isLeftScreen, setIsLeftScreen] = useState(false);
-  const [loading, setLoading] = useState<boolean>(true)
-
-  const params = useLocalSearchParams();
-
-  console.log("WhatsNew navigation params", params)
   const startIndex = 1; // Start at the first right item (after 1 left screens)
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import { View, Text, Platform, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import { moderateScale, moderateVerticalScale, scale, verticalScale } from 'react-native-size-matters'
 
-const InfoScreen = (props:any) => {
+const InfoScreen = (props: any) => {
     return (
         <View style={styles.container}>
             <View>
@@ -11,7 +11,7 @@ const InfoScreen = (props:any) => {
             <Text style={styles.title}>{props?.item?.contentTitle}</Text>
             <View style={styles.line}>
             </View>
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1 }}>
                 <Text style={styles.description}>{props?.item?.contentDesciption}</Text>
             </View>
         </View>
@@ -30,10 +30,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#211C34',
     },
-    line:{
+    line: {
         width: '85%',
         alignSelf: 'center',
-        
+
         borderWidth: 1,
         borderColor: '#FFFFFF'
     },

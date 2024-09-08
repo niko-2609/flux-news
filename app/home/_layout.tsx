@@ -1,15 +1,14 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { Stack } from 'expo-router/stack';
+import { Text } from 'react-native';
 
 export default function TabLayout() {
   return (
-    <Tabs 
-    initialRouteName='whatsNew'
-    screenOptions={{ 
-      unmountOnBlur: true,
-        tabBarActiveTintColor: '#cfbf15', 
+    <Tabs
+      initialRouteName='whatsNew'
+      screenOptions={{
+        unmountOnBlur: true,
+        tabBarActiveTintColor: '#cfbf15',
         headerShown: false,
         tabBarStyle: {
           backgroundColor: '#211C34',
@@ -23,17 +22,15 @@ export default function TabLayout() {
     >
       <Tabs.Screen
         name="whatsNew"
-        options={({navigation}) => { return {
-          title: "What's New",
-          tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
-          headerLeft: () => null,
-          headerTitle: props => <Text>Whats new</Text>,
-          tabBarButton : props => (
-            <TouchableOpacity {...props} onPress={() => navigation.navigate('whatsNew', {from: 'tabBarButton'})}/>
-          )
-
-        }}
-      }
+        options={({ navigation }) => {
+          return {
+            title: "What's New",
+            tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
+            headerLeft: () => null,
+            headerTitle: props => <Text>Whats new</Text>,
+          }
+        }
+        }
       />
       <Tabs.Screen
         name="feed"
@@ -44,11 +41,11 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-      name="tags/[id]"
-      options={{
-        href: null,
-      }}
-    />
+        name="tags/[id]"
+        options={{
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }

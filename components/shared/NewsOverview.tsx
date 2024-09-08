@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#211C34',
     },
     textContainer: {
-        // paddingHorizontal: moderateScale(10),
         marginVertical: moderateScale(10),
     },
     heading: {
@@ -45,8 +44,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontFamily: "Monda_400Regular"
-        // letterSpacing: Platform.OS === "android" ? 2 : 3,
-        // lineHeight: Platform.OS === "android" ?moderateScale(40): moderateScale(50)
     }
 })
 

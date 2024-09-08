@@ -11,6 +11,9 @@ import DHONI1 from '@/assets/fluxImages/dhoni1.png'
 import DHONI2 from '@/assets/fluxImages/dhoni2.png'
 import NIFTY1 from '@/assets/fluxImages/nifty1.png'
 import NIFTY2 from '@/assets/fluxImages/nifty2.png'
+import TAG1 from '@/assets/fluxImages/tag1.png'
+import TAG2 from '@/assets/fluxImages/tag2.png'
+import TAG3 from '@/assets/fluxImages/tag3.png'
 
 
 export {
@@ -26,5 +29,8 @@ export {
     DHONI1,
     DHONI2,
     NIFTY1,
-    NIFTY2
+    NIFTY2,
+    TAG1,
+    TAG2,
+    TAG3,
 }
