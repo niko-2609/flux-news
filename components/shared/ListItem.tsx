@@ -11,7 +11,6 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 
 const ListItem = (props:any) => {
-  console.log("inside list item screen")
   const tabBarHeight = useBottomTabBarHeight();
   let itemHeight = SCREEN_HEIGHT - tabBarHeight;
 
