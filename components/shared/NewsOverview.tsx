@@ -6,7 +6,7 @@ const NewsOverview = (props: any) => {
     return (
         <View style={styles.container}>
             <View>
-                <Image source={props?.item?.contentImage} style={{ width: Platform.OS === 'android' ? scale(350) : scale(360), height: Platform.OS === "android" ? verticalScale(344) : verticalScale(325) }} resizeMode='contain' />
+                <Image source={props?.item?.contentImage} style={{ width: Platform.OS === 'android' ? scale(350) : scale(350), height: Platform.OS === "android" ? verticalScale(344) : verticalScale(320) }} resizeMode='contain' />
             </View>
             <View style={styles.textContainer}>
                 <Text style={styles.heading}>{props?.item?.contentTitle}</Text>

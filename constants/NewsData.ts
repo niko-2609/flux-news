@@ -68,22 +68,22 @@ export const news = [
           {
             tagId: 1,
             tagName: "Imane Khelif",
-            tagLink: "/someUrl"
+            tagLink: "imane"
           },
           { 
             tagId: 2,
             tagName: "Lin Yu-ting",
-            tagLink: "/someUrl"
+            tagLink: "lin"
           },
           {
             tagId: 3,
             tagName: "IBA World Boxing Championship",
-            tagLink: "/someUrl"
+            tagLink: "worldboxingchamp"
           },
           {
             tagId: 4,
             tagName: "2024 Paris Olympics",
-            tagLink: "/someUrl"
+            tagLink: "olympics"
           },
         ],
         historyImage: "",

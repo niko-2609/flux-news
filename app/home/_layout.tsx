@@ -1,11 +1,14 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { Stack } from 'expo-router/stack';
 
 export default function TabLayout() {
   return (
     <Tabs 
+    initialRouteName='whatsNew'
     screenOptions={{ 
+      unmountOnBlur: true,
         tabBarActiveTintColor: '#cfbf15', 
         headerShown: false,
         tabBarStyle: {
@@ -20,12 +23,17 @@ export default function TabLayout() {
     >
       <Tabs.Screen
         name="whatsNew"
-        options={{
+        options={({navigation}) => { return {
           title: "What's New",
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
           headerLeft: () => null,
           headerTitle: props => <Text>Whats new</Text>,
+          tabBarButton : props => (
+            <TouchableOpacity {...props} onPress={() => navigation.navigate('whatsNew', {from: 'tabBarButton'})}/>
+          )
+
         }}
+      }
       />
       <Tabs.Screen
         name="feed"
@@ -35,6 +43,12 @@ export default function TabLayout() {
           headerLeft: () => null,
         }}
       />
+      <Tabs.Screen
+      name="tags/[id]"
+      options={{
+        href: null,
+      }}
+    />
     </Tabs>
   );
 }

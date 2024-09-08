@@ -1,15 +1,16 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Button, Pressable } from 'react-native'
 import React from 'react'
-import { Link } from 'expo-router';
+import { Link, useNavigation } from 'expo-router';
 import { moderateScale } from 'react-native-size-matters';
 
 const TagItem = (props:any) => {
+  const navigation = useNavigation<any>()
   return (
-   <Link href={props?.item?.tagLink}>
+   <Pressable onPress={(event:any) => navigation.navigate('tags/[id]',{id: props?.item?.tagLink })}>
     <View style={styles.tagItemContainer}>
       <Text style={styles.tagItemText}>{props?.item.tagName}</Text>
     </View>
-   </Link>
+   </Pressable>
   )
 }
 
