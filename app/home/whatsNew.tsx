@@ -16,7 +16,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const roundedScreenWidth = Math.round(SCREEN_WIDTH);
 
-const Item = ({ item, index, setVerticalScrollEnabled, itemHeight, isScrollingDown }: any) => {
+const Item = ({ item, index, setVerticalScrollEnabled, itemHeight, isScrollingDown, isScrollingUp }: any) => {
   const scrollViewRef = useRef<any>(null);
   const [isLeftScreen, setIsLeftScreen] = useState(false);
   const startIndex = 1; // Start at the first right item (after 1 left screens)
@@ -50,13 +50,13 @@ const Item = ({ item, index, setVerticalScrollEnabled, itemHeight, isScrollingDo
 
   //   // Scroll to the first right item on the next vertical item when scrolling down
   useEffect(() => {
-    if (isScrollingDown && scrollViewRef.current) {
+    if ((isScrollingDown || isScrollingUp) && scrollViewRef.current) {
       scrollViewRef.current.scrollTo({
         x: SCREEN_WIDTH * startIndex, // First right screen
         animated: false,
       });
     }
-  }, [isScrollingDown]);
+  }, [isScrollingDown, isScrollingUp, index]);
 
   // if (loading) return <View style={{justifyContent: 'center', height: itemHeight, width: SCREEN_WIDTH, alignItems: 'center', borderWidth: 1, borderColor: 'blue'}}>
   //   <ActivityIndicator  />
@@ -106,10 +106,21 @@ const WhatsNew = () => {
   const tabBarHeight = useBottomTabBarHeight();
   const itemHeight = SCREEN_HEIGHT - tabBarHeight;
   const flatListRef = useRef<any>(null);
+  const [previousVerticalIdx, setPreviousVerticalIdx] = useState<number | null>(null);
+
 
   const onViewableItemsChanged = ({ viewableItems }: any) => {
     if (viewableItems.length > 0) {
-      setLocalIdx(viewableItems[0].index);
+      const newIndex = viewableItems[0].index;
+      
+      // If moving between vertical items, track direction and reset horizontal scroll
+      if (previousVerticalIdx !== null && newIndex !== previousVerticalIdx) {
+        setIsScrollingDown(newIndex > previousVerticalIdx);
+        setIsScrollingUp(newIndex < previousVerticalIdx);
+      }
+  
+      setPreviousVerticalIdx(newIndex); // Update the previous index
+      setLocalIdx(newIndex); // Update the current index
     }
   };
 
@@ -122,9 +133,9 @@ const WhatsNew = () => {
     if (newIndex > previousIndex) {
       setIsScrollingDown(true); // Scrolling down
       setIsScrollingUp(false);
-    } else {
+    } else if (newIndex < previousIndex) {
       setIsScrollingDown(false);
-      setIsScrollingUp(true) // Scrolling up
+      setIsScrollingUp(true); // Scrolling up
     }
   };
 
@@ -141,6 +152,7 @@ const WhatsNew = () => {
             itemHeight={itemHeight}
             scrollIndex={index === 0 ? 1 : undefined} // Start horizontal scroll at rightItems[0] for the first item
             isScrollingDown={isScrollingDown}
+            isScrollingUp={isScrollingUp}
           />
         )}
         keyExtractor={(_, index) => index.toString()}
