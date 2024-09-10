@@ -14,6 +14,14 @@ import NIFTY2 from '@/assets/fluxImages/nifty2.png'
 import TAG1 from '@/assets/fluxImages/tag1.png'
 import TAG2 from '@/assets/fluxImages/tag2.png'
 import TAG3 from '@/assets/fluxImages/tag3.png'
+import AIBreakthrough from '@/assets/fluxImages/ai-breakthrough.png'
+import AIFeatures from '@/assets/fluxImages/ai-features.png'
+import AIApplications from '@/assets/fluxImages/ai-applications.png'
+import AIEthics from '@/assets/fluxImages/ai-ethics.png'
+import ClimateSummit from '@/assets/fluxImages/climate-summit.png'
+import ClimateChallenges from '@/assets/fluxImages/climate-challenges.png'
+import ClimateResponse from '@/assets/fluxImages/climate-response.png'
+import ClimateCommitments from '@/assets/fluxImages/climate-change.png'
 
 
 export {
@@ -33,4 +41,12 @@ export {
     TAG1,
     TAG2,
     TAG3,
+    AIBreakthrough,
+    AIFeatures,
+    AIApplications,
+    AIEthics,
+    ClimateChallenges,
+    ClimateResponse,
+    ClimateSummit,
+    ClimateCommitments,
 }
